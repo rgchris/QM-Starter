@@ -1,0 +1,13 @@
+<h1><%== user/get 'name %>&#8217;s Dashboard</h1>
+
+<div class="main dashboard">
+
+<p><%! a users/profile/(user/id) %><em>Edit Profile</em></a></h1>
+<form method="post" action="/users,sign-out">
+<button type="submit"><em>Sign Out</em></button>
+</form>
+<p><%== any [user/get 'biography "No Biography"] %></p>
+
+<% if user/moderator? [print render/partial %moderator] %>
+
+</div>

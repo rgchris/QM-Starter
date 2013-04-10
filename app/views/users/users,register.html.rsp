@@ -1,0 +1,45 @@
+<h1>Contributor Registration</h1>
+
+<div role="complementary">
+<p>Thanks for your interest<br />Please allow some time for our moderators to approve your registration</p>
+</div>
+
+<%! form post %/users,register /main %>
+
+<%= render/partial/with %errors/form with/only prospect [errors] %>
+
+<p><%! check #toc prospect/toc "true" (as logic! prospect/get 'toc) %> <label for="toc">I have read and accept this site&#8217;s Contributor Guidelines.</label></p>
+
+<fieldset>
+	<legend><em>Account Information</em></legend>
+
+	<div class="field" data-name="id">
+		<label for="p_id"><em>Your Username</em></label>
+		<div class="input"><%! field #p_id prospect/id (prospect/get 'id) %></div>
+		<p>Your username can contain up to 15 characters, limited to alphanumeric or '_'</p>
+	</div>
+
+	<div class="field" data-name="name">
+		<label for="p_name"><em>Your Name</em></label>
+		<div class="input"><%! field #p_name prospect/name (prospect/get 'name) %></div>
+	</div>
+
+	<div class="field" data-name="email">
+		<label for="p_email"><em>Your Email</em></label>
+		<div class="input"><%! field #p_email email! prospect/email (prospect/get 'email) %></div>
+	</div>
+
+	<div class="field" data-name="password">
+		<label for="p_password"><em>Your Password</em></label>
+		<div class="input"><%! password #p_password prospect/password %></div>
+	</div>
+
+	<div class="field" data-name="confirmation">
+		<label for="p_confirmation"><em>Confirmation</em></label>
+		<div class="input"><%! password #p_confirmation prospect/confirmation %></div>
+	</div>
+
+	<div class="engage"><button type="submit"><em>Register</em></button></div>
+</fieldset>
+
+</form>

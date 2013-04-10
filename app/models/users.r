@@ -29,7 +29,7 @@ to-sha1-password: func [salt pass][
 record: make record [
 	name: link: document: none
 
-	owner?: developer?: moderator?: editor?: author?: curator?: pending?: none
+	owner?: developer?: moderator?: editor?: author?: pending?: none
 
 	has-role?: func [role][
 		any [
@@ -65,7 +65,6 @@ record: make record [
 		moderator?: has-role? 'moderator
 		editor?: has-role? 'editor
 		author?: has-role? 'author
-		curator?: has-role? 'curator
 
 		pending?: all [
 			not owner?
@@ -106,18 +105,14 @@ record: make record [
 			user/moderator? [submit roles details]
 		][
 			set 'password any [get 'password pass]
-			if any [
-				user/id = id
-				user/owner?
-			][
-				bind-bio-to user
-			]
+
 			case [
 				owner? set 'roles [owner]
 				not user/id = id [
 					set 'roles get-roles any [get 'roles []]
 				]
 			]
+
 			set 'is-pending? has-role? 'pending
 			store
 		]

@@ -1,0 +1,35 @@
+<h1>Profile: <i>@<%== target/id %></i></h1>
+
+<h2 class="ribbon"></h2>
+
+<aside role="complementary">
+<%=
+
+	render/partial/use %templates/actions collect [
+		if user/moderator? [
+			if empty? target/get 'roles [
+				keep reduce ['button 'delete link-to users/profile/(target/id) "Delete User"]
+			]
+			keep [link %/users/list "Manage Users"]
+		]
+		keep [button post %/users,sign-out "Sign Out"]
+	]
+
+%>
+</aside>
+
+<%! form put users/profile/(target/id) /main %>
+
+<% if message [ %><div class="attention ok"><h4><%== message %></h4></div><% ] %>
+
+<fieldset>
+	<legend><em>Edit Details</em></legend>
+	<%= render/partial/with %errors/form with/only target [errors] %>
+	<%! hidden target/id (target/id) %>
+	<%= render/partial either any [user/owner? user/target?][%profile,edit][%profile] %>
+	<%= if all [not target? user/moderator?][render/partial %roles,edit] %>
+	<div class="engage"><button type="submit"><em>Update</em></button></div>
+</fieldset>
+
+<%= if user/moderator? [render/partial %show-background] %>
+</form>

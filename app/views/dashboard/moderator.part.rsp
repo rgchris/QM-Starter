@@ -1,0 +1,19 @@
+<% some pending-users [
+
+%><h1>User Admin</h1>
+<ul class="shorts"><%
+
+	foreach user pending-users [
+
+%>
+<li class="short">
+<h1><%: a users/profile/(user/id) %><%= user/name %></a></h1>
+</li><%
+
+	]
+
+%></ul><%
+
+]
+
+%>

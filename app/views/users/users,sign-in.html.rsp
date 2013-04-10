@@ -1,0 +1,25 @@
+<h1>Sign In</h1>
+
+<h2>If you are not already a contributor, <a href="/users,register">register</a> here</h2>
+
+<%! form post %/users,sign-in /main %>
+
+<fieldset>
+	<legend><em>Enter Username and Password</em></legend>
+
+	<%= render/partial/with %errors/form with/only target [errors] %>
+
+	<div class="field" data-name="id">
+		<label for="u_id"><em>Name</em></label>
+		<div class="input"><%! field #u_id user/id (target/get 'id) %></div>
+	</div>
+
+	<div class="field" data-name="password">
+		<label for="u_password"><em>Pass</em></label>
+		<div class="input"><%! password #u_password user/password %></div>
+	</div>
+
+	<div class="engage"><button type="submit"><em>Sign In</em></button></div>
+</fieldset>
+
+</form>
